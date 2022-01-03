@@ -7,7 +7,7 @@ wpmTag = document.querySelector(".wpm span"),
 cpmTag = document.querySelector(".cpm span");
 
 let timer,
-maxTime = 60,
+maxTime = 100,
 timeLeft = maxTime,
 charIndex = mistakes = isTyping = 0;
 
@@ -51,7 +51,7 @@ function initTyping() {
         characters.forEach(span => span.classList.remove("active"));
         characters[charIndex].classList.add("active");
 
-        let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 60);
+        let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 100);
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         
         wpmTag.innerText = wpm;
@@ -67,7 +67,7 @@ function initTimer() {
     if(timeLeft > 0) {
         timeLeft--;
         timeTag.innerText = timeLeft;
-        let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 60);
+        let wpm = Math.round(((charIndex - mistakes)  / 5) / (maxTime - timeLeft) * 100);
         wpmTag.innerText = wpm;
     } else {
         clearInterval(timer);
